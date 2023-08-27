@@ -3,6 +3,9 @@ package pl.pingpong;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data
@@ -13,10 +16,13 @@ public abstract class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public String firstName;
-    public String lastName;
-    public String gender;
-    public LocalDate dateOfBirth;
-    public String nationality;
+    @NotBlank
+    @NotNull
+    public String firstName, lastName, gender;
 
+    @NotBlank
+    @NotNull
+    @Past
+    public
+    LocalDate dateOfBirth;
 }

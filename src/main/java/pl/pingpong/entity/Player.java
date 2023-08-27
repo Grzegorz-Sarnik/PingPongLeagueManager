@@ -13,11 +13,8 @@ import javax.persistence.*;
 @ToString
 @Table(name = "players")
 public class Player extends Person {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String licenseNumber;
-    private String role;
+    private String licenseNumber, role;
 }
-
