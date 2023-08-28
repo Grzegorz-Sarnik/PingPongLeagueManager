@@ -26,8 +26,7 @@ public class PlayerDao {
         entityManager.merge(player);
     }
 
-    public void removePlayer(Player player){
-        entityManager.remove(entityManager.contains(player) ? player : entityManager.merge(player));
+    public void removePlayer(Player player){entityManager.remove(entityManager.contains(player) ? player : entityManager.merge(player));
     }
 
     public List<Player> findAll(){

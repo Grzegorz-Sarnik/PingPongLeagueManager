@@ -15,10 +15,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/player")
-public class playerController {
+public class PlayerController {
     private PlayerDao playerDao;
 
-    public playerController(PlayerDao playerDao) {
+    public PlayerController(PlayerDao playerDao) {
         this.playerDao = playerDao;
     }
 

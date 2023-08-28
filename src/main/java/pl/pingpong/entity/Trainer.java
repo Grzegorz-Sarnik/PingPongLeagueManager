@@ -9,12 +9,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Component
-@Data
-@ToString
-@Table(name = "players")
-public class Player extends Person {
+    @Entity
+    @Component
+    @Data
+    @ToString
+@Table(name = "trainers")
+public class Trainer extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,5 @@ public class Player extends Person {
 
     @NotNull
     @NotBlank
-    private String licenseNumber;
-
+    private String LicenseNumber;
 }

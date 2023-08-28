@@ -6,15 +6,17 @@ import org.springframework.stereotype.Component;
 import pl.pingpong.Person;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 @Entity
 @Component
 @Data
 @ToString
-@Table(name = "players")
-public class Player extends Person {
+@Table(name = "managers")
+public class Manager extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +24,8 @@ public class Player extends Person {
 
     @NotNull
     @NotBlank
-    private String licenseNumber;
+    private String phone;
 
+    @Email
+    private String email;
 }
