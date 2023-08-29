@@ -1,20 +1,21 @@
 package pl.pingpong.entity;
 
 import lombok.Data;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Component
 @Data
 @ToString
-@Table(name = "managers")
-public class Manager {
+@Table(name = "league")
+public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +23,16 @@ public class Manager {
 
     @NotNull
     @NotBlank
-    private String phone;
+    private int leagueNumber;
 
-    @Email
-    private String email;
+    @ManyToOne
+    private Season season;
 
-    @OneToOne
-    private PersonData personData;
+    @OneToMany(mappedBy = "league")
+    private List<Team> teams;
+
+    @OneToMany(mappedBy = "league")
+    private List<LeagueMatchday> leagueMatchdays;
+
+
 }

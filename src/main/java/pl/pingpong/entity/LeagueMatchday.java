@@ -5,28 +5,35 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Component
 @Data
 @ToString
-@Table(name = "managers")
-public class Manager {
+@Table(name = "leagues_matchdays")
+public class LeagueMatchday {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
-    @NotBlank
-    private String phone;
+    private LocalDate date;
 
-    @Email
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "league_id")
+    private League league;
 
-    @OneToOne
-    private PersonData personData;
+    @OneToMany(mappedBy = "leagueMatchday")
+    private List<Match> matches;
+
+
+
+
+
+
 }

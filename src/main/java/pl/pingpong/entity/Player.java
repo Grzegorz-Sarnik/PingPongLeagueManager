@@ -3,7 +3,6 @@ package pl.pingpong.entity;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
-import pl.pingpong.Person;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -14,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @ToString
 @Table(name = "players")
-public class Player extends Person {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +22,17 @@ public class Player extends Person {
     @NotNull
     @NotBlank
     private String licenseNumber;
+
+    @OneToOne
+    private PersonData personData;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
+
 
 }

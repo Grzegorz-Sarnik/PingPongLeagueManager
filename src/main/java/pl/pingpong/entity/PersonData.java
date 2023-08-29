@@ -1,4 +1,4 @@
-package pl.pingpong;
+package pl.pingpong.entity;
 
 import lombok.Data;
 
@@ -10,19 +10,24 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Person {
+@Table(name = "personData")
+public class PersonData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank
     @NotNull
-    public String firstName, lastName, gender;
+    private String firstName;
+    @NotBlank
+    @NotNull
+    private String lastName;
+    @NotBlank
+    @NotNull
+    private String gender;
 
     @NotBlank
     @NotNull
     @Past
-    public
-    LocalDate dateOfBirth;
+    public LocalDate dateOfBirth;
 }

@@ -5,16 +5,18 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.rmi.dgc.Lease;
+import java.time.Year;
+import java.util.List;
 
 @Entity
 @Component
 @Data
 @ToString
-@Table(name = "managers")
-public class Manager {
+@Table(name = "seasons")
+public class Season {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +24,11 @@ public class Manager {
 
     @NotNull
     @NotBlank
-    private String phone;
+    private int seasonNumber;
 
-    @Email
-    private String email;
+    @OneToMany
+    @JoinColumn(name = "league_id")
+    private List<League> league;
 
-    @OneToOne
-    private PersonData personData;
+
 }

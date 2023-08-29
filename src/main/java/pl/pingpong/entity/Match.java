@@ -7,26 +7,36 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.EnumMap;
 import java.util.List;
 
 @Entity
 @Component
 @Data
 @ToString
-@Table(name = "trainers")
-public class Trainer {
+@Table(name = "matches")
+public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @NotBlank
-    private String LicenseNumber;
+    @ManyToOne
+    @JoinColumn(name = "leagues_matchdays_id")
+    private LeagueMatchday leagueMatchday;
 
     @OneToOne
-    private PersonData personData;
+    private Team  homeTeam;
 
-    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Team> teams;
+    @OneToOne
+    private Team guestTeam;
+
+    private String resultHomeTeam;
+    private String resultGuestTeam;
+
+    @OneToMany(mappedBy = "match")
+    private List <Game> games;
+
+
+
 }

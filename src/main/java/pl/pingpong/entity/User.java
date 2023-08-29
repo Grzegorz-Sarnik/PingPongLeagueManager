@@ -5,7 +5,6 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -13,20 +12,19 @@ import javax.validation.constraints.NotNull;
 @Component
 @Data
 @ToString
-@Table(name = "managers")
-public class Manager {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @NotBlank
-    private String phone;
-
-    @Email
-    private String email;
-
     @OneToOne
     private PersonData personData;
+
+    private String password;
+
+    private String login;
+
+    private String userRole;
 }
