@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 @Data
 @ToString
-@Table(name = "league")
+@Table(name = "leagues")
 public class League {
 
     @Id

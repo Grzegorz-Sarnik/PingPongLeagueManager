@@ -24,7 +24,6 @@ public class Season {
     @NotBlank
     private Integer seasonNumber;
 
-    @OneToMany
-    @JoinColumn(name = "leagues_id")
-    private List<League> league;
+    @OneToMany(mappedBy = "season")
+    private List<League> leagues;
 }

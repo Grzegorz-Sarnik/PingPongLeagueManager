@@ -22,7 +22,7 @@ public class LeagueMatchday {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "league_id")
+    @JoinColumn(name = "leagues_id")
     private League league;
 
     @OneToMany(mappedBy = "leagueMatchday")

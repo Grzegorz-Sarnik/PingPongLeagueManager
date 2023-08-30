@@ -32,8 +32,7 @@ public class Club {
     @NotBlank
     private String address;
 
-    @OneToMany
-    @JoinColumn(name = "team_id")
+    @OneToMany(mappedBy = "club")
     private List<Team> teams;
 
     @OneToOne
