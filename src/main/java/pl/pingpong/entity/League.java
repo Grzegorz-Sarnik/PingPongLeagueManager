@@ -1,7 +1,6 @@
 package pl.pingpong.entity;
 
 import lombok.Data;
-import lombok.Setter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +22,7 @@ public class League {
 
     @NotNull
     @NotBlank
-    private int leagueNumber;
+    private Integer leagueNumber;
 
     @ManyToOne
     private Season season;
@@ -33,6 +32,4 @@ public class League {
 
     @OneToMany(mappedBy = "league")
     private List<LeagueMatchday> leagueMatchdays;
-
-
 }

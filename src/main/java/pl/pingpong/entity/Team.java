@@ -2,8 +2,6 @@ package pl.pingpong.entity;
 
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
-import pl.pingpong.dao.PlayerDao;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,7 +23,7 @@ public class Team {
     private Trainer trainer;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Player> player;
+    private List<Player> players;
 
     @ManyToOne
     private Club club;
@@ -33,5 +31,4 @@ public class Team {
     @ManyToOne
     @JoinColumn(name = "league_id")
     private League league;
-
 }

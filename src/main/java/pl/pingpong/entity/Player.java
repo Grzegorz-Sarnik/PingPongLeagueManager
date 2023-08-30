@@ -33,6 +33,4 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "club_id")
     private Club club;
-
-
 }

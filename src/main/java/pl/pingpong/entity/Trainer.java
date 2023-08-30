@@ -22,7 +22,7 @@ public class Trainer {
 
     @NotNull
     @NotBlank
-    private String LicenseNumber;
+    private String licenseNumber;
 
     @OneToOne
     private PersonData personData;

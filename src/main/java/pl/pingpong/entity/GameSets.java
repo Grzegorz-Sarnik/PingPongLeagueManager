@@ -19,11 +19,7 @@ public class GameSets {
     private int scoreHome;
     private int scoreGuest;
 
-
     @ManyToOne
     @JoinColumn(name = "games_id")
     private Game game;
-
-
-
 }

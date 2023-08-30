@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.rmi.dgc.Lease;
-import java.time.Year;
 import java.util.List;
 
 @Entity
@@ -24,11 +22,9 @@ public class Season {
 
     @NotNull
     @NotBlank
-    private int seasonNumber;
+    private Integer seasonNumber;
 
     @OneToMany
-    @JoinColumn(name = "league_id")
+    @JoinColumn(name = "leagues_id")
     private List<League> league;
-
-
 }

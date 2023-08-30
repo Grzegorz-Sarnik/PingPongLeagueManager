@@ -5,9 +5,6 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.EnumMap;
 import java.util.List;
 
 @Entity
@@ -26,17 +23,14 @@ public class Match {
     private LeagueMatchday leagueMatchday;
 
     @OneToOne
-    private Team  homeTeam;
+    private Team homeTeam;
 
     @OneToOne
     private Team guestTeam;
 
-    private String resultHomeTeam;
-    private String resultGuestTeam;
+    private Integer resultHomeTeam;
+    private Integer resultGuestTeam;
 
     @OneToMany(mappedBy = "match")
-    private List <Game> games;
-
-
-
+    private List<Game> games;
 }

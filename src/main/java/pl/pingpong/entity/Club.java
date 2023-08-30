@@ -32,11 +32,6 @@ public class Club {
     @NotBlank
     private String address;
 
-
-
-    @OneToOne
-    private PersonData personData;
-
     @OneToMany
     @JoinColumn(name = "team_id")
     private List<Team> teams;
@@ -45,6 +40,5 @@ public class Club {
     private Manager manager;
 
     @OneToMany
-    private List <Player> players;
-
+    private List<Player> players;
 }

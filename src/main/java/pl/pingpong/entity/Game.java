@@ -5,8 +5,6 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -23,7 +21,7 @@ public class Game {
     private int gameNumber;
 
     @ManyToOne
-    @JoinColumn(name = "match_id")
+    @JoinColumn(name = "matches_id")
     private Match match;
 
     @OneToOne
@@ -36,10 +34,9 @@ public class Game {
     @OneToOne
     private Player looser;
 
-    private String resultHome;
-    private String resultGuestTeam;
+    private int resultHome;
+    private int resultGuestTeam;
 
     @OneToMany(mappedBy = "game")
     private List<GameSets> gameSets;
-
 }
