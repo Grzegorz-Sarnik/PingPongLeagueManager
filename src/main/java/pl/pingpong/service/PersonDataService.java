@@ -13,7 +13,7 @@ public class PersonDataService {
     private PersonDataRepository personDataRepository;
 
     public PersonDataService(PersonDataRepository personDataRepository) {
-        this.personDataRepository =personDataRepository;
+        this.personDataRepository = personDataRepository;
     }
 
     public List<PersonData> getAllPersonData() {
