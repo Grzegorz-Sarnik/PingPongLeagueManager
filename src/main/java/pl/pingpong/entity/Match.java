@@ -2,7 +2,6 @@ package pl.pingpong.entity;
 
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
