@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Component
 @Data
 @ToString
 @Table(name = "trainers")
@@ -20,13 +19,12 @@ public class Trainer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
     @NotBlank
     private String licenseNumber;
 
     @OneToOne
     private PersonData personData;
 
-    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainer")
     private List<Team> teams;
 }

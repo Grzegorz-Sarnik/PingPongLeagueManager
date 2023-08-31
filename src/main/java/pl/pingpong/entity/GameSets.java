@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -16,7 +17,9 @@ public class GameSets {
     private Integer id;
 
     private int setNumber;
+
     private int scoreHome;
+
     private int scoreGuest;
 
     @ManyToOne

@@ -5,9 +5,9 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Component
 @Data
 @ToString
 @Table(name = "users")
@@ -20,8 +20,9 @@ public class User {
     @OneToOne
     private PersonData personData;
 
+    @NotBlank
     private String password;
-
+    @NotBlank
     private String login;
 
     private String userRole;

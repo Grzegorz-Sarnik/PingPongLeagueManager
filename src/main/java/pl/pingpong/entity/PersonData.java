@@ -17,17 +17,14 @@ public class PersonData {
     private Long id;
 
     @NotBlank
-    @NotNull
     private String firstName;
-    @NotBlank
-    @NotNull
-    private String lastName;
-    @NotBlank
-    @NotNull
-    private String gender;
 
     @NotBlank
-    @NotNull
+    private String lastName;
+
+    @NotBlank
+    private String gender;
+
     @Past
     public LocalDate dateOfBirth;
 }

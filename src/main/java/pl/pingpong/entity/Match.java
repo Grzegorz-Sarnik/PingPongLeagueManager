@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Component
 @Data
 @ToString
 @Table(name = "matches")

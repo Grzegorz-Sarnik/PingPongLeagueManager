@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Component
 @Data
 @ToString
 @Table(name = "seasons")
@@ -20,7 +19,6 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
     @NotBlank
     private Integer seasonNumber;
 

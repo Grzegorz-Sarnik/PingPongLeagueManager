@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Component
 @Data
 @ToString
 @Table(name = "leagues_matchdays")
