@@ -1,5 +1,6 @@
 package pl.pingpong.Controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,19 +13,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/person")
 public class PersonDataController {
 
-    private PersonDataService personDataService;
-
-    public PersonDataController(PersonDataService personDataService) {
-        this.personDataService = personDataService;
-    }
+    private final PersonDataService personDataService;
 
     @GetMapping("/get/list")
     public String getAllPersonData(Model model) {
         List<PersonData> personDataList = personDataService.getAllPersonData();
-        model.addAttribute(personDataList);
+        model.addAttribute("personDataList", personDataList);
         return ""; // ---- DODAĆ ------- widok listy
     }
 
@@ -66,10 +64,10 @@ public class PersonDataController {
     @PostMapping("/update/{id}")
     public String processUpdateForm(@Valid PersonData personData, BindingResult result) {
         if (result.hasErrors()) {
-            return ""; // ---- DODAĆ ------- redirect do listy
+            return ""; // ---- DODAĆ ------- UPDATE FORM
         }
         personDataService.savePersonData(personData);
-        return ""; // ---- DODAĆ ------- widok - SZUKANA OSOBA NIE ISTNIEJE W BAZIE
+        return ""; // ---- DODAĆ ------- WIDOK LISTY
     }
 
     @GetMapping("/delete/{id}")

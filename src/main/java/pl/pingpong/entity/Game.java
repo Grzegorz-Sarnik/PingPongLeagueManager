@@ -5,6 +5,8 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @Entity
@@ -32,7 +34,12 @@ public class Game {
     @OneToOne
     private Player looser;
 
+    @Min(0)
+    @Max(3)
     private int resultHome;
+
+    @Min(0)
+    @Max(3)
     private int resultGuestTeam;
 
     @OneToMany(mappedBy = "game")

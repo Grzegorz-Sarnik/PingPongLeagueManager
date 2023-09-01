@@ -18,15 +18,12 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
     @NotBlank
     private String name;
 
-    @NotNull
     @NotBlank
     private String contact;
 
-    @NotNull
     @NotBlank
     private String address;
 
