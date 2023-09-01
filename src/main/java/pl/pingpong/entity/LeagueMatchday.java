@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "leagues_matchdays")
 public class LeagueMatchday {
 

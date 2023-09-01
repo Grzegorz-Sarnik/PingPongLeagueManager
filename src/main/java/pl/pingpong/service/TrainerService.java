@@ -1,5 +1,6 @@
 package pl.pingpong.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pingpong.entity.Trainer;
 import pl.pingpong.repository.TrainerRepository;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TrainerService {
 
-    private TrainerRepository trainerRepository;
-
-    public TrainerService(TrainerRepository trainerRepository) {
-        this.trainerRepository = trainerRepository;
-    }
+    private final TrainerRepository trainerRepository;
 
     public List<Trainer> getAllTrainers() {
         return (List<Trainer>) trainerRepository.findAll();

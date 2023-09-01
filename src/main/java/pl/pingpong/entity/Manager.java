@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
-@ToString
 @Table(name = "managers")
 public class Manager {
 

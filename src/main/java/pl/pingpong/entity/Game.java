@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "games")
 public class Game {
 

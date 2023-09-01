@@ -1,5 +1,6 @@
 package pl.pingpong.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pingpong.entity.Team;
 import pl.pingpong.repository.TeamRepository;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TeamService {
 
-    private TeamRepository teamRepository;
-
-    public TeamService(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
+    private final TeamRepository teamRepository;
 
     public List<Team> getAllTeams() {
         return (List<Team>) teamRepository.findAll();

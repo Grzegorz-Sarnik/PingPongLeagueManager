@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
-@ToString
 @Table(name = "players")
 public class Player {
 

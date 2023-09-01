@@ -9,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
-@ToString
 @Table(name = "users")
 public class User {
 
