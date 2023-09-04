@@ -1,13 +1,15 @@
 package pl.pingpong.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "game_sets")
 public class GameSets {
@@ -16,10 +18,15 @@ public class GameSets {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Min(1)
+    @Max(5)
     private int setNumber;
 
+    @Min(0)
+    @Max(11)
     private int scoreHome;
-
+    @Min(0)
+    @Max(11)
     private int scoreGuest;
 
     @ManyToOne

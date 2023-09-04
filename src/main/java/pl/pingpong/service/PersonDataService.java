@@ -1,5 +1,6 @@
 package pl.pingpong.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pingpong.entity.PersonData;
 import pl.pingpong.repository.PersonDataRepository;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PersonDataService {
 
-    private PersonDataRepository personDataRepository;
-
-    public PersonDataService(PersonDataRepository personDataRepository) {
-        this.personDataRepository =personDataRepository;
-    }
+    private final PersonDataRepository personDataRepository;
 
     public List<PersonData> getAllPersonData() {
         return (List<PersonData>) personDataRepository.findAll();

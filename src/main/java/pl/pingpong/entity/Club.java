@@ -1,17 +1,13 @@
 package pl.pingpong.entity;
 
 import lombok.Data;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "clubs")
 public class Club {
 
@@ -19,15 +15,14 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+
     @NotBlank
+    @Column(unique = true)
     private String name;
 
-    @NotNull
     @NotBlank
     private String contact;
 
-    @NotNull
     @NotBlank
     private String address;
 

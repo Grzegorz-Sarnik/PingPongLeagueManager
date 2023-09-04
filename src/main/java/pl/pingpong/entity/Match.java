@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "matches")
 public class Match {
 

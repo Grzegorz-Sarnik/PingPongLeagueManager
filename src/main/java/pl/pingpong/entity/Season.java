@@ -11,7 +11,6 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "seasons")
 public class Season {
 

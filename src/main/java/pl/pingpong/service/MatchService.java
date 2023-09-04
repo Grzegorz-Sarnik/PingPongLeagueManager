@@ -1,5 +1,6 @@
 package pl.pingpong.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pingpong.entity.Match;
 import pl.pingpong.repository.MatchRepository;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MatchService {
 
-    private MatchRepository matchRepository;
-
-    public MatchService(MatchRepository matchRepository) {
-        this.matchRepository = matchRepository;
-    }
+    private final MatchRepository matchRepository;
 
     public List<Match> getAllMatches() {
         return (List<Match>) matchRepository.findAll();

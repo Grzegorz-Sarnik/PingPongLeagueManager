@@ -1,5 +1,6 @@
 package pl.pingpong.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
-@ToString
 @Table(name = "users")
 public class User {
 
@@ -26,4 +26,8 @@ public class User {
     private String login;
 
     private String userRole;
+
+    public User(){
+        this.userRole = "user";
+    }
 }

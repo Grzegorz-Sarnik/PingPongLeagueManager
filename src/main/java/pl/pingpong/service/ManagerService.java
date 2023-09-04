@@ -1,5 +1,6 @@
 package pl.pingpong.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pingpong.entity.Manager;
 import pl.pingpong.repository.ManagerRepository;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ManagerService {
 
-    private ManagerRepository managerRepository;
-
-    public ManagerService(ManagerRepository managerRepository) {
-        this.managerRepository = managerRepository;
-    }
+    private final ManagerRepository managerRepository;
 
     public List<Manager> getAllManagers() {
         return (List<Manager>) managerRepository.findAll();

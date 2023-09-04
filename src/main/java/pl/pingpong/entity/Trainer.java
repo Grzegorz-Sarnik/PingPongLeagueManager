@@ -11,7 +11,6 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
 @Table(name = "trainers")
 public class Trainer {
 
@@ -19,7 +18,6 @@ public class Trainer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
     private String licenseNumber;
 
     @OneToOne
