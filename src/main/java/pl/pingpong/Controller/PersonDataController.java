@@ -1,10 +1,12 @@
 package pl.pingpong.Controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pingpong.entity.PersonData;
 import pl.pingpong.service.PersonDataService;
 
@@ -12,7 +14,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
 @RequiredArgsConstructor
 @RequestMapping("/person")
 public class PersonDataController {
@@ -23,7 +24,7 @@ public class PersonDataController {
     public String getAllPersonData(Model model) {
         List<PersonData> personDataList = personDataService.getAllPersonData();
         model.addAttribute("personDataList", personDataList);
-        return ""; // ---- DODAĆ ------- widok listy
+        return ""; //        return ""; // ---- DODAĆ ------- widok listy
     }
 
     @GetMapping("/get/{id}")
@@ -72,7 +73,7 @@ public class PersonDataController {
 
     @GetMapping("/delete/{id}")
     public String deletePersonData(@PathVariable Integer id, Model model) {
-        model.addAttribute("PersondataId", id);
+        model.addAttribute("PersonDataId", id);
         return "";  // ---- DODAĆ ------- formularz potwierdzający usunięcie jsp
     }
 

@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data
@@ -24,6 +23,5 @@ public class PersonData {
     @NotBlank
     private String gender;
 
-    @Past
     public LocalDate dateOfBirth;
 }
