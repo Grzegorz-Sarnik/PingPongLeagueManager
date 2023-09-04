@@ -18,7 +18,6 @@ public class Trainer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
     private String licenseNumber;
 
     @OneToOne

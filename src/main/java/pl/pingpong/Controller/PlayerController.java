@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.pingpong.entity.PersonData;
 import pl.pingpong.entity.Player;
+import pl.pingpong.service.PersonDataService;
 import pl.pingpong.service.PlayerService;
 
 import javax.validation.Valid;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final PersonDataService personDataService;
 
     @GetMapping("/get/list")
     public String getAllPlayers(Model model) {
@@ -42,16 +45,19 @@ public class PlayerController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("player", new Player());
-        return ""; // FORM DODAWANIA Player
+        return "/player/add-player-form"; // FORM DODAWANIA Player
     }
 
     @PostMapping("/add")
     public String processAddForm(@Valid Player player, BindingResult result) {
         if (result.hasErrors()) {
-            return ""; // FORM ADD Player
+            return "/player/add-player-form"; // FORM ADD Player
         }
+        PersonData personData = player.getPersonData();
+        personDataService.savePersonData(personData);
+
         playerService.savePlayer(player);
-        return ""; //FORM ADD Player
+        return "/player/add-player-form"; //FORM ADD Player
     }
 
     @GetMapping("/update/{id}")
@@ -68,7 +74,8 @@ public class PlayerController {
     public String processUpdateForm(@Valid Player player, BindingResult result) {
         if (result.hasErrors()) {
             return ""; // UPDATE FORM
-        }playerService.savePlayer(player);
+        }
+        playerService.savePlayer(player);
         return ""; // PlayerLIST
     }
 

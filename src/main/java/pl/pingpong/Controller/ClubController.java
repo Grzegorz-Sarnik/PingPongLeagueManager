@@ -1,6 +1,7 @@
 package pl.pingpong.Controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,16 +43,21 @@ public class ClubController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("club", new Club());
-        return ""; // FORM DODAWANIA CLUB
+        return "/club/add-club-form"; // FORM DODAWANIA CLUB
     }
 
     @PostMapping("/add")
     public String processAddForm(@Valid Club club, BindingResult result) {
         if (result.hasErrors()) {
-            return ""; // FORM ADD CLUB
+            return "/club/add-club-form"; // FORM ADD CLUB
+        }
+        if (!clubService.isClubNameUnique(club.getName())) {
+            result.rejectValue("name", "error.club", "Podana nazwa klubu już istnieje");
+            return "/club/add-club-form"; // FORM ADD CLUB
+
         }
         clubService.saveClub(club);
-        return ""; //FORM ADD CLUB
+        return "/club/add-club-form"; //FORM ADD CLUB
     }
 
     @GetMapping("/update/{id}")

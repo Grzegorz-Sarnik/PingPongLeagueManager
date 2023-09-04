@@ -1,12 +1,8 @@
 package pl.pingpong.entity;
 
 import lombok.Data;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -17,7 +13,6 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
     private String licenseNumber;
 
     @OneToOne

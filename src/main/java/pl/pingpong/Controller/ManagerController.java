@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pingpong.entity.Manager;
+import pl.pingpong.entity.PersonData;
 import pl.pingpong.service.ManagerService;
+import pl.pingpong.service.PersonDataService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,10 +19,11 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/manager")
+@RequestMapping("/managers")
 public class ManagerController {
 
     private final ManagerService managerService;
+    private final PersonDataService personDataService;
 
     @GetMapping("/get/list")
     public String getAllManagers(Model model) {
@@ -42,16 +45,19 @@ public class ManagerController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("manager", new Manager());
-        return ""; // FORM DODAWANIA Manager
+        return "/manager/add-manager-form"; // FORM DODAWANIA Manager
     }
 
     @PostMapping("/add")
     public String processAddForm(@Valid Manager manager, BindingResult result) {
         if (result.hasErrors()) {
-            return ""; // FORM ADD Manager
+            return "/manager/add-manager-form"; // FORM ADD Manager
         }
+        PersonData personData = manager.getPersonData();
+        personDataService.savePersonData(personData);
+
         managerService.saveManager(manager);
-        return ""; //FORM ADD Manager
+        return "/manager/add-manager-form"; //FORM ADD Manager
     }
 
     @GetMapping("/update/{id}")

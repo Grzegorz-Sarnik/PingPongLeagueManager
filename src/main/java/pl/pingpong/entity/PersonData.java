@@ -23,5 +23,6 @@ public class PersonData {
     @NotBlank
     private String gender;
 
+
     public LocalDate dateOfBirth;
 }

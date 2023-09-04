@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pingpong.entity.PersonData;
 import pl.pingpong.entity.User;
-import pl.pingpong.repository.PersonDataRepository;
+import pl.pingpong.service.PersonDataService;
 import pl.pingpong.service.UserService;
 
 import javax.validation.Valid;
@@ -23,7 +23,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private final PersonDataRepository personDataRepository;
+    private final PersonDataService personDataService;
 
     @GetMapping("/get/list")
     public String getAllUsers(Model model) {
@@ -54,7 +54,7 @@ public class UserController {
             return "/user/user-form"; // FORM ADD User
         }
         PersonData personData = user.getPersonData();
-        personDataRepository.save(personData);
+        personDataService.savePersonData(personData);
 
         userService.saveUser(user);
         return "/user/user-form"; //FORM ADD User

@@ -29,4 +29,9 @@ public class ClubService {
     public void deleteClub(Integer id) {
         clubRepository.deleteById(id);
     }
+
+    public boolean isClubNameUnique(String clubName) {
+        Club existingClub = clubRepository.findByName(clubName);
+        return existingClub == null;
+    }
 }
